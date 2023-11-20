@@ -96,7 +96,7 @@ def train(args) -> None:
     # ==================== Data Process ====================
     if not args.preproc_done:
         processor(
-            video_path=args.video_path,
+            video_path=args.input,
             model_uid=args.model_uid,
             train_dir=args.train_dir,
             infer_dir=args.infer_dir,
