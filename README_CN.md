@@ -66,7 +66,7 @@
     cd <PROJECT>
     export PYTHONPATH=./
 
-    python -u create_train_task.py -i <input_video> -n <model_name>
+    python -u create_train_task.py -i <input_video> --model_uid <model_name>
 
     python -u create_infer_task.py -i <input_audio> -c <model_name or model_config_file>
     ```
