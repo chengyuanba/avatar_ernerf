@@ -1,0 +1,10 @@
+{
+    "__pretrained_weights_folder": "存放数据预处理所需算法的权重文件的目录",
+    "pretrained_weights_folder": "./pretrained_weights/",
+    "__model_dataset_folder": "存放输入视频以及经过预处理的数据的目录",
+    "model_dataset_folder": "./model_dataset/",
+    "__checkpoints_folder": "存放训练的中间结果和权重文件数据的目录",
+    "checkpoints_folder": "./train_ckpts/",
+    "__results_folder": "存放推理结果视频文件的目录",
+    "results_folder": "./infer_results/"
+}

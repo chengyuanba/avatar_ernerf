@@ -1,0 +1,24 @@
+ffmpeg-python
+librosa
+lpips
+matplotlib
+numba
+numpy
+opencv-python
+opencv-contrib-python
+pyaudio
+PyMCubes
+pandas
+rich
+scipy
+scikit-learn
+scikit-image
+tensorboardX
+torch-ema
+tqdm
+trimesh
+
+face_alignment
+onnxruntime # or use gpu version
+# onnxruntime-gpu==1.13.1
+transformers
