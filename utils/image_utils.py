@@ -53,7 +53,7 @@ def get_image(input: Union[str, tuple, list, np.ndarray],
         # (3) `input`是`颜色值`(R, G, B);
         assert len(input) == 3, f"Unsupported input color: {input}"
         output = np.ones(shape=(height, width, 3), dtype="uint8"
-                         ) * input
+                         ) * np.array(input, dtype="uint8")
     elif isinstance(input, np.ndarray):
         # (4) `input`是`图像数据`;
         output = input.copy()

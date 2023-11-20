@@ -6,6 +6,7 @@ import json
 import logging
 import os
 import time
+from typing import Union
 
 from tasks.ernerf_train import train_task
 
@@ -13,7 +14,7 @@ from tasks.ernerf_train import train_task
 def trainer(
     model_cfg_file: str,
     preload: int = 0,
-    task_num: int = -1
+    task: Union[int, list] = -1
 ) -> str:
     """
     Params:
@@ -22,11 +23,11 @@ def trainer(
             0 - 不进行预加载, 实时从硬盘加载数据;
             1 - 预加载数据到内存, 可以较快加速训练流程, 但增加内存消耗;
             2 - 预加载数据到显存, 可以更快加速训练流程, 但增加显存消耗;
-        task_num(int): 训练任务类型;
+        task(int, list): 训练任务类型;
             -1 - 进行所有训练任务;
-             0 - 仅进行头部的训练任务;
-             1 - 仅进行嘴部的微调训练任务;
-             2 - 仅进行躯干部的训练任务;
+            1 - 仅进行头部的训练任务;
+            2 - 仅进行嘴部的微调训练任务;
+            3 - 仅进行躯干部的训练任务;
 
     """
 
@@ -73,7 +74,7 @@ def trainer(
     # ==================== ER-NeRF Training ====================
     training_time = time.time()
     # #### 模型训练: task head training
-    if task_num == -1 or task_num == 0:
+    if (task == -1) or (1 in task):
         logging.info("Training Step 01 [Head] Start ...")
         train_task(
             data_path=data_dir,
@@ -90,7 +91,7 @@ def trainer(
         logging.info("Training Step 01 [Head] Done.")
 
     # #### 模型训练: task lips fine-tune
-    if task_num == -1 or task_num == 1:
+    if (task == -1) or (2 in task):
         logging.info("Training Step 02 [Lips] Start ...")
         train_task(
             data_path=data_dir,
@@ -108,7 +109,7 @@ def trainer(
         logging.info("Training Step 02 [Lips] Done.")
 
     # #### 模型训练: step 03 -> torso training
-    if task_num == -1 or task_num == 2:
+    if (task == -1) or (3 in task):
         logging.info("Training Step 03 [Torso] Start ...")
         train_task(
             data_path=data_dir,
