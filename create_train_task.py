@@ -27,9 +27,8 @@ def parse_args():
                         help="GPU ID to use.",
                         default=0)
     # ==========>> Checking
-    parser.add_argument("--checker_only_first", type=bool, required=False,
-                        help="Only check the first frame.",
-                        default=False)
+    parser.add_argument("--checker_only_first", action="store_true",
+                        help="Only check the first frame.")
     parser.add_argument("--checker_skip_steps", type=int, required=False,
                         help="Skip steps for checking, if checker_only_first is True, it will be ignored.",
                         default=24)
@@ -83,6 +82,7 @@ def parse_args():
     parser.add_argument("--preload", type=int, required=False, default=0,
                         help="Preload mode for train, 0 means from hard disk; 1 means from mermory; 2 means from gpu memory.")
 
+    parser.set_defaults(checker_only_first=False)
     parser.set_defaults(use_torso=False)
     parser.set_defaults(preproc_only=False)
     parser.set_defaults(preproc_done=False)
