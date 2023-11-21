@@ -88,3 +88,8 @@
 - 背景抠图模型来源于: [BackgroundMattingV2](https://github.com/PeterL1n/BackgroundMattingV2.git)
 
 - 说话头生成模型来源于: [ER-NeRF](https://github.com/Fictionarry/ER-NeRF.git)
+
+## 其他
+
+- 一个微信的技术分享群, 欢迎分享和交流
+![wechat](./docs/wechat_group.jpg)
