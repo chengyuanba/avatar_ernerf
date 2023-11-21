@@ -14,6 +14,8 @@ def load_dir(path, start, end):
         if os.path.exists(img_path) and os.path.exists(lmk_path):
             lmk = np.loadtxt(lmk_path, dtype="float32")
             lmks.append(lmk)
+            imgs_paths.append(img_path)
     lmks = np.stack(lmks)
     lmks = torch.as_tensor(lmks).cuda()
+    
     return lmks, imgs_paths
